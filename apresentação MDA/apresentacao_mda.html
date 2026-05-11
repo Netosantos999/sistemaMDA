@@ -234,16 +234,27 @@ h3{font-size:1rem;font-weight:700;color:#e2e8f0;margin-bottom:6px}
 
 /* ── RESPONSIVE MOBILE ──────────────────────────────── */
 @media(max-width:768px){
-  /* Cada slide ativo rola verticalmente em vez de cortar o conteúdo */
+  /* Empilhamento vertical: todos os slides ficam visíveis, o usuário rola normalmente */
+  html,body{overflow-y:auto;height:auto}
+  .deck{height:auto;position:static}
   .slide{
-    padding:22px 16px 80px!important;
-    overflow-y:auto;
-    -webkit-overflow-scrolling:touch;
+    position:relative!important;
+    opacity:1!important;
+    pointer-events:all!important;
+    transform:none!important;
+    display:flex!important;
+    min-height:100svh;
+    padding:28px 16px 40px!important;
     justify-content:flex-start;
     align-items:flex-start;
   }
 
-  /* Tipografia menor */
+  /* Oculta controles — usuário navega rolando, sem botões */
+  .nav-bar{display:none!important}
+  .progress-bar{display:none}
+  .slide-footer{display:none}
+
+  /* Tipografia */
   h1{font-size:1.7rem}
   h2{font-size:1.2rem;margin-bottom:4px}
   h3{font-size:.88rem}
@@ -251,34 +262,26 @@ h3{font-size:1rem;font-weight:700;color:#e2e8f0;margin-bottom:6px}
   .eyebrow{font-size:.62rem;margin-bottom:8px}
   .stat-num{font-size:1.5rem}
 
-  /* Grids colapsam para coluna única */
+  /* Grids → coluna única */
   .slide-inner{gap:12px}
   .grid-2{grid-template-columns:1fr;gap:12px}
   .grid-3{grid-template-columns:1fr;gap:10px}
   .mod-grid{grid-template-columns:1fr 1fr;gap:8px}
 
-  /* Fluxo → empilhado verticalmente */
+  /* Fluxo → vertical */
   .flow{flex-direction:column;gap:4px}
   .flow-arrow{transform:rotate(90deg);padding:2px 0;font-size:1rem}
 
-  /* Stats → 2 por linha, com quebra */
+  /* Stats → 2 por linha */
   .stat-row{flex-wrap:wrap}
   .stat{min-width:50%;flex:none;border-right:none;border-bottom:1px solid rgba(255,255,255,.07)}
   .stat:nth-child(odd){border-right:1px solid rgba(255,255,255,.07)}
 
-  /* Barra de navegação com alvos de toque maiores */
-  .nav-bar{padding:10px 14px;bottom:10px;gap:8px}
-  .nav-btn{font-size:1.1rem;padding:8px 12px;min-width:42px;min-height:42px;display:flex;align-items:center;justify-content:center}
-  .nav-count{font-size:.76rem;min-width:52px}
-
-  /* Rodapé oculto no mobile */
-  .slide-footer{display:none}
-
-  /* Slide de capa — manter centralizado */
+  /* Slide 1 — capa centralizada */
   #s1 .slide-content-rel{align-items:center;text-align:center}
   #s1 h1{text-align:center}
 
-  /* Slides de demo — sobrepor grids inline */
+  /* Demo slides — sobrepor grids com estilo inline */
   #sdemoA [style*="grid-template-columns"],
   #sdemoB [style*="grid-template-columns"]{
     grid-template-columns:1fr!important;
@@ -287,18 +290,18 @@ h3{font-size:1rem;font-weight:700;color:#e2e8f0;margin-bottom:6px}
     min-height:0!important;
   }
   .screen-grid-2x2,.screen-grid-2x1{grid-template-columns:1fr;grid-template-rows:auto;height:auto}
-  .screen-img{max-height:200px;object-fit:cover}
+  .screen-img{max-height:220px;object-fit:cover}
 
-  /* Tabelas com scroll horizontal */
+  /* Tabelas */
   .cmp-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
   .cmp-table thead th,.cmp-table tbody td{padding:8px 10px;font-size:.75rem;white-space:nowrap}
   .ben-table{font-size:.76rem}
 
-  /* Cards com padding reduzido */
+  /* Cards */
   .card{padding:14px 12px}
   .mod-item{padding:12px}
 
-  /* Círculos decorativos menores */
+  /* Decoração */
   .c1{width:260px;height:260px;top:-60px;right:-40px}
   .c2{width:150px;height:150px}
   .c3{display:none}
@@ -971,12 +974,14 @@ document.addEventListener('keydown',function(e){
   if(e.key==='f'||e.key==='F'){if(!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});else document.exitFullscreen();}
   if(e.key==='p'||e.key==='P')window.print();
 });
+/* Swipe horizontal — apenas em desktop (mobile usa scroll vertical nativo) */
+const isMobile=()=>window.innerWidth<=768;
 let _tx=0,_ty=0;
 document.addEventListener('touchstart',e=>{_tx=e.touches[0].clientX;_ty=e.touches[0].clientY;},{passive:true});
 document.addEventListener('touchend',e=>{
+  if(isMobile())return; /* no mobile o scroll é nativo */
   const dx=e.changedTouches[0].clientX-_tx;
   const dy=e.changedTouches[0].clientY-_ty;
-  /* Só navega se swipe horizontal dominante (evita conflito com scroll vertical) */
   if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5)goTo(dx<0?cur+1:cur-1);
 },{passive:true});
 /* Inicializa progresso e contador */
