@@ -851,6 +851,28 @@
       flex-shrink: 0
     }
 
+    /* ── CREDENCIAIS BOX ────────────────────────────────── */
+    .cred-grid {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .cred-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.1rem;
+      color: #14532d;
+    }
+
+    .cred-sep {
+      color: #166534;
+      opacity: 0.3;
+      font-weight: 300;
+    }
+
     /* ── RESPONSIVE MOBILE ──────────────────────────────── */
     @media(max-width:768px) {
 
@@ -1042,6 +1064,19 @@
       .c3 {
         display: none
       }
+      .cred-grid {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .cred-sep {
+        display: none;
+      }
+
+      .cred-item {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -1123,13 +1158,19 @@
           </p>
 
           <div
-            style="background:#dcfce7;border:1px solid #86efac;padding:16px;border-radius:8px;margin-bottom:16px">
+            style="background:#dcfce7;border:1px solid #86efac;padding:16px;border-radius:12px;margin-bottom:16px">
             <span style="font-size:0.8rem;color:#166534;text-transform:uppercase;letter-spacing:0.05em;font-weight:700">Credenciais
               de Acesso:</span>
-            <div style="margin-top:8px;font-size:1.1rem;color:#14532d">
-              Usuário: <strong style="background:#bbf7d0;padding:2px 6px;border-radius:4px">admin</strong>
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-              Senha: <strong style="background:#bbf7d0;padding:2px 6px;border-radius:4px">admin123</strong>
+            <div class="cred-grid">
+              <div class="cred-item">
+                <span>Usuário:</span>
+                <strong style="background:#bbf7d0;padding:2px 8px;border-radius:6px">admin</strong>
+              </div>
+              <span class="cred-sep">|</span>
+              <div class="cred-item">
+                <span>Senha:</span>
+                <strong style="background:#bbf7d0;padding:2px 8px;border-radius:6px">admin123</strong>
+              </div>
             </div>
           </div>
 
