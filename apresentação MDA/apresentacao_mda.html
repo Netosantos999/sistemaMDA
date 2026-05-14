@@ -1050,77 +1050,104 @@
 
   <div class="progress-bar" id="progress-bar"></div>
 
-  <div
-    style="background:#fef9c3;color:#92400e;border:2px solid #fbbf24;padding:18px 24px;margin:32px auto 24px auto;max-width:700px;border-radius:8px;box-shadow:0 2px 8px #0002;font-size:1em">
-    <strong style="font-size:1.05em">Modelo de Acesso — Sistema MDA</strong><br><br>
-    O Sistema MDA é disponibilizado com <strong>30 dias de uso gratuito</strong> a partir da primeira execução, sem
-    necessidade de cadastro prévio.
-    Após esse período, a continuidade do acesso está condicionada à assinatura do plano mensal no valor de <strong>R$
-      59,90/mês</strong>,
-    com renovação automática mediante conexão à internet a cada 30 dias.<br><br>
-    Para ativação, renovação ou suporte, entre em contato:<br>
-    <a href="mailto:francelinotees@gmail.com"
-      style="color:#92400e;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:4px">francelinotees@gmail.com</a>
-    <span style="margin:0 12px;opacity:0.4;">|</span>
-    <a href="https://wa.me/5588988136586" target="_blank"
-      style="color:#059669;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:4px">WhatsApp</a>
-  </div>
-
-  <!-- ======================================================
-     SEÇÃO DE DOWNLOAD E INSTRUÇÃO DE USO
-     Insira abaixo o link do Google Drive com o arquivo do programa
-     e o link da instrução de uso.
-     Exemplo de uso:
-       href="https://drive.google.com/SEU-LINK-AQUI"
-====================================================== -->
-  <div
-    style="background:#e0f2fe;color:#0c4a6e;border:2px solid #38bdf8;padding:16px 22px;margin:0 auto 32px auto;max-width:700px;border-radius:8px;box-shadow:0 2px 8px #0002;font-size:1em;display:flex;flex-direction:column;gap:12px">
-    <strong style="font-size:1.05em">Download do Programa</strong>
-    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:4px">
-      <a href="https://apps.microsoft.com/SEU-LINK-AQUI" target="_blank"
-        style="display:inline-flex;align-items:center;gap:8px;background:#0284c7;color:#fff;font-weight:700;padding:10px 20px;border-radius:6px;text-decoration:none;box-shadow:0 2px 6px #0002">
-        Baixar na Microsoft Store
-      </a>
-    </div>
-    <span style="font-size:.82em;color:#075985;margin-top:2px">Clique no botão acima para instalar de forma segura via
-      Microsoft Store.</span>
-  </div>
-
-  <div
-    style="background:#f0fdf4;color:#166534;border:2px solid #4ade80;padding:18px 24px;margin:0 auto 32px auto;max-width:700px;border-radius:8px;box-shadow:0 2px 8px #0002;font-size:1em">
-    <strong style="font-size:1.05em">Ambiente de Demonstração Incluído</strong><br><br>
-    O pacote de instalação já vem configurado com um banco de dados (<strong>mda.db</strong>) contendo uma obra de
-    exemplo chamada <strong>"SE exemplo"</strong>. Assim, você pode explorar e testar todas as funcionalidades do
-    sistema imediatamente.<br><br>
-
-    <div
-      style="background:#dcfce7;border:1px solid #86efac;padding:10px 16px;border-radius:6px;display:inline-block;margin-bottom:16px;box-shadow:0 1px 4px #0001">
-      <span
-        style="font-size:0.9em;color:#166534;text-transform:uppercase;letter-spacing:0.05em;font-weight:700">Credenciais
-        de Acesso:</span><br>
-      <div style="margin-top:6px;font-size:1.05em;color:#14532d">
-        Usuário: <strong style="background:#bbf7d0;padding:2px 6px;border-radius:4px;user-select:all">admin</strong>
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-        Senha: <strong style="background:#bbf7d0;padding:2px 6px;border-radius:4px;user-select:all">admin123</strong>
-      </div>
-    </div><br>
-    <img src="obraexemplo.png" alt="Obra de Exemplo"
-      style="width:100%;max-width:650px;border-radius:6px;margin:12px auto;display:block;border:1px solid #bbf7d0;box-shadow:0 2px 6px #0002"><br>
-    <strong>Como iniciar sua própria obra do zero:</strong><br>
-    Após conhecer e testar o sistema com a obra de exemplo, para começar o seu próprio projeto, siga este passo simples:
-    <ol style="margin-top:8px;margin-left:24px;line-height:1.6">
-      <li>Dentro do sistema, acesse a lista de obras e <strong>exclua a obra "SE exemplo"</strong>;</li>
-      <li>Pronto! O sistema estará limpo para você cadastrar sua nova obra conforme o <strong>PDF Guia de Instalação</strong> incluído no pacote.</li>
-    </ol>
-    <span style="font-size:0.85em; color:#166534; opacity:0.8"><em><strong>Dica:</strong> Se desejar um "Reset de Fábrica" total (apagando também novos usuários), basta fechar o sistema e apagar o arquivo <strong>mda.db</strong> na pasta de instalação.</em></span>
-  </div>
-
   <div class="deck" id="deck">
+
+    <!-- ══════════════════════════════════════════════════
+       SLIDE 0.1 — MODELO DE ACESSO
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide bg-mid active" id="s0_1">
+      <div class="slide-inner" style="max-width:750px">
+        <div class="eyebrow amber">Licenciamento</div>
+        <div
+          style="background:#fef9c3;color:#92400e;border:2px solid #fbbf24;padding:32px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.3)">
+          <h2 style="color:#92400e; margin-bottom:12px">Modelo de Acesso</h2>
+          <p style="font-size:1.1rem; line-height:1.6; color:#78350f">
+            O Sistema MDA é disponibilizado com <strong>30 dias de uso gratuito</strong> a partir da primeira execução,
+            sem necessidade de cadastro prévio.
+          </p>
+          <p style="font-size:1.1rem; line-height:1.6; color:#78350f; margin-top:16px">
+            Após esse período, a continuidade do acesso está condicionada à assinatura do plano mensal no valor de
+            <strong>R$ 59,90/mês</strong>.
+          </p>
+          <div class="divider" style="background:rgba(146, 64, 14, 0.2); margin:24px 0"></div>
+          <p style="font-weight:700; color:#92400e">Contatos para suporte e ativação:</p>
+          <div style="display:flex; gap:20px; margin-top:12px; flex-wrap:wrap">
+            <a href="mailto:francelinotees@gmail.com"
+              style="color:#92400e; font-weight:800; text-decoration:none; border-bottom: 2px solid #fbbf24">francelinotees@gmail.com</a>
+            <a href="https://wa.me/5588988136586" target="_blank"
+              style="color:#059669; font-weight:800; text-decoration:none; border-bottom: 2px solid #4ade80">WhatsApp</a>
+          </div>
+        </div>
+        <p style="text-align:center; margin-top:24px; color:#64748b; font-size:0.9rem">
+          Use as setas do teclado ou os botões abaixo para navegar na apresentação
+        </p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════
+       SLIDE 0.2 — DOWNLOAD
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide bg-mid" id="s0_2">
+      <div class="slide-inner" style="max-width:750px">
+        <div class="eyebrow">Instalação</div>
+        <div
+          style="background:#e0f2fe;color:#0c4a6e;border:2px solid #38bdf8;padding:32px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.3)">
+          <h2 style="color:#0c4a6e; margin-bottom:12px">Download do Programa</h2>
+          <p style="font-size:1.1rem; line-height:1.6; color:#075985">
+            Instale o Sistema MDA de forma segura e oficial através da loja de aplicativos do Windows.
+          </p>
+          <div style="margin:24px 0">
+            <a href="https://apps.microsoft.com/SEU-LINK-AQUI" target="_blank"
+              style="display:inline-flex;align-items:center;gap:12px;background:#0284c7;color:#fff;font-weight:800;font-size:1.1rem;padding:16px 32px;border-radius:8px;text-decoration:none;box-shadow:0 4px 12px rgba(2, 132, 199, 0.4)">
+              <span>&#128187;</span> Baixar na Microsoft Store
+            </a>
+          </div>
+          <p style="font-size:0.9rem; color:#075985; opacity:0.8">
+            A instalação via Microsoft Store garante que o programa seja verificado e livre de ameaças.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════
+       SLIDE 0.3 — DEMONSTRAÇÃO
+    ══════════════════════════════════════════════════════ -->
+    <div class="slide bg-mid" id="s0_3">
+      <div class="slide-inner" style="max-width:850px">
+        <div class="eyebrow green">Primeiros Passos</div>
+        <div
+          style="background:#f0fdf4;color:#166534;border:2px solid #4ade80;padding:28px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.3)">
+          <h2 style="color:#166534; margin-bottom:8px">Ambiente de Demonstração</h2>
+          <p style="font-size:0.95rem; color:#14532d; margin-bottom:16px">
+            O pacote já inclui a obra <strong>"SE exemplo"</strong> para você testar todas as funcionalidades.
+          </p>
+
+          <div
+            style="background:#dcfce7;border:1px solid #86efac;padding:16px;border-radius:8px;margin-bottom:16px">
+            <span style="font-size:0.8rem;color:#166534;text-transform:uppercase;letter-spacing:0.05em;font-weight:700">Credenciais
+              de Acesso:</span>
+            <div style="margin-top:8px;font-size:1.1rem;color:#14532d">
+              Usuário: <strong style="background:#bbf7d0;padding:2px 6px;border-radius:4px">admin</strong>
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              Senha: <strong style="background:#bbf7d0;padding:2px 6px;border-radius:4px">admin123</strong>
+            </div>
+          </div>
+
+          <div style="font-size:0.9rem; line-height:1.5">
+            <strong>Como iniciar sua própria obra:</strong>
+            <ol style="margin-top:4px; margin-left:20px">
+              <li>Exclua a obra "SE exemplo" na lista de obras;</li>
+              <li>Cadastre sua nova obra conforme o Guia de Instalação.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- ══════════════════════════════════════════════════
        SLIDE 1 — CAPA
   ══════════════════════════════════════════════════════ -->
-    <div class="slide bg-cover active" id="s1">
+    <div class="slide bg-cover" id="s1">
       <div class="cover-deco">
         <div class="deco-circle c1"></div>
         <div class="deco-circle c2"></div>
@@ -2087,6 +2114,7 @@
       const dy = e.changedTouches[0].clientY - _ty;
       if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) goTo(dx < 0 ? cur + 1 : cur - 1);
     }, { passive: true });
+    /* Inicializa progresso e contador */
     /* Inicializa progresso e contador */
     document.getElementById('counter').textContent = pad(1) + ' / ' + pad(TOTAL);
     document.getElementById('progress-bar').style.width = ((1 / TOTAL) * 100) + '%';
