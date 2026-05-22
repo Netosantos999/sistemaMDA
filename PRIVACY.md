@@ -1,7 +1,7 @@
 # Política de Privacidade — Sistema MDA Acompanhamento de Obras
 
 **Última atualização:** 22 de maio de 2026  
-**Versão do aplicativo:** 4.7  
+**Versão do aplicativo:** 4.8  
 **Desenvolvedor:** Francelino Neto Santos  
 **Contato:** francelinotees@gmail.com
 
