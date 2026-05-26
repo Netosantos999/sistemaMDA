@@ -1,7 +1,7 @@
 # Política de Privacidade — Sistema MDA Acompanhamento de Obras
 
-**Última atualização:** 22 de maio de 2026  
-**Versão do aplicativo:** 4.8  
+**Última atualização:** 26 de maio de 2026  
+**Versão do aplicativo:** 5.0  
 **Desenvolvedor:** Francelino Neto Santos  
 **Contato:** francelinotees@gmail.com
 
@@ -23,7 +23,7 @@ Para ativar o período de avaliação gratuita, solicitamos:
 |-------|----------------|------------|
 | Nome Completo | Obrigatório | Identificação do usuário |
 | E-mail | Obrigatório | Comunicação e ativação de licença |
-| Telefone / WhatsApp | Opcional | Suporte técnico |
+| WhatsApp | Obrigatório | Suporte técnico e validação de licença |
 | Empresa ou Obra | Obrigatório | Identificação do contexto de uso |
 
 ### 2.2 Identificador de Dispositivo (HWID)
@@ -48,7 +48,7 @@ Esses dados **nunca são enviados para servidores externos** sem o seu consentim
 |------|-----------|------------------------------|
 | Nome e E-mail | Gerenciamento de licença (período trial / assinatura) | Somente com o servidor de licenciamento Firebase (Google Cloud) |
 | HWID (hash) | Vincular licença ao dispositivo | Somente com o servidor de licenciamento Firebase (Google Cloud) |
-| Telefone | Suporte técnico (opcional) | Não |
+| WhatsApp | Suporte técnico e validação de licença | Não |
 | Dados do projeto | Funcionamento do sistema | Não — armazenados localmente |
 
 ---
