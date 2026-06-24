@@ -24,43 +24,47 @@
     html,
     body {
       width: 100%;
-      height: 100%;
-      overflow: hidden;
+      height: auto;
+      overflow-y: auto;
       font-family: 'Segoe UI', system-ui, Arial, sans-serif;
       background: #1e293b;
-      color: #f1f5f9
+      color: #f1f5f9;
+      scroll-behavior: smooth;
     }
 
     /* ── SLIDES ─────────────────────────────────────────── */
     .deck {
       width: 100%;
-      height: 100vh;
-      position: relative
+      height: auto;
+      position: static;
+      display: flex;
+      flex-direction: column;
     }
 
     .slide {
-      position: absolute;
-      inset: 0;
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 44px 60px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .4s ease, transform .4s ease;
-      transform: translateX(40px);
+      padding: 60px 60px;
+      opacity: 1;
+      pointer-events: all;
+      min-height: 100vh;
+      transform: none;
+      transition: none;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
     .slide.active {
       opacity: 1;
       pointer-events: all;
-      transform: translateX(0)
+      transform: none;
     }
 
     .slide.prev {
-      opacity: 0;
-      transform: translateX(-40px)
+      opacity: 1;
+      transform: none;
     }
 
     /* ── FUNDOS ──────────────────────────────────────────── */
@@ -1083,8 +1087,6 @@
 
 <body>
 
-  <div class="progress-bar" id="progress-bar"></div>
-
   <div class="deck" id="deck">
 
     <!-- ══════════════════════════════════════════════════
@@ -1217,6 +1219,13 @@
           <span class="badge badge-green">Operação 100% Offline</span>
           <span class="badge badge-blue">Curva S em Tempo Real</span>
           <span class="badge badge-amber">RDO Gerado Automaticamente</span>
+        </div>
+        
+        <!-- Botão cruzado para MDA Eletrotécnica -->
+        <div style="margin-top:24px;text-align:center;">
+          <a href="index_eletrotecnica.html" style="display:inline-block;padding:12px 24px;background:transparent;color:#93c5fd;border:2px solid #93c5fd;border-radius:30px;font-weight:600;text-decoration:none;transition:all 0.3s;font-size:1.05rem;" onmouseover="this.style.background='#93c5fd';this.style.color='#0f172a'" onmouseout="this.style.background='transparent';this.style.color='#93c5fd'">
+            Conheça também o MDA Eletrotécnica &rarr;
+          </a>
         </div>
       </div>
       <div class="slide-footer">
@@ -2234,62 +2243,6 @@ A interface simples, intuitiva e prática, permitindo que encarregados e mestres
     </div>
   </div>
 
-  <div class="nav-bar">
-    <button class="nav-btn" id="btn-prev" title="Anterior (← ou swipe)">&#8592;</button>
-    <span class="nav-count" id="counter">01 / 11</span>
-    <button class="nav-btn" id="btn-next" title="Próximo (→ ou swipe)">&#8594;</button>
-    <button class="nav-btn" id="btn-fs" title="Tela cheia"
-      style="font-size:.9rem;border-left:1px solid rgba(255,255,255,.1);padding-left:14px;margin-left:4px">&#x26F6;</button>
-  </div>
-
-  <script>
-    /* Navegação baseada em DOM — compatível com qualquer número de slides */
-    const slides = [...document.querySelectorAll('.slide')];
-    const TOTAL = slides.length;
-    let cur = 0;
-    function pad(n) { return String(n).padStart(2, '0') }
-    function goTo(n) {
-      if (n < 0 || n >= TOTAL) return;
-      const leaving = slides[cur];
-      leaving.classList.remove('active'); leaving.classList.add('prev');
-      setTimeout(() => leaving.classList.remove('prev'), 480);
-      slides[n].classList.add('active');
-      slides[n].scrollTop = 0; /* volta ao topo ao trocar slide no mobile */
-      cur = n;
-      document.getElementById('counter').textContent = pad(cur + 1) + ' / ' + pad(TOTAL);
-      document.getElementById('progress-bar').style.width = (((cur + 1) / TOTAL) * 100) + '%';
-    }
-    /* Botões de navegação */
-    document.getElementById('btn-prev').onclick = () => goTo(cur - 1);
-    document.getElementById('btn-next').onclick = () => goTo(cur + 1);
-    /* Botão tela cheia */
-    document.getElementById('btn-fs').onclick = function () {
-      if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => { });
-      else document.exitFullscreen();
-    };
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); goTo(cur + 1); }
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); goTo(cur - 1); }
-      if (e.key === 'Home') { e.preventDefault(); goTo(0); }
-      if (e.key === 'End') { e.preventDefault(); goTo(TOTAL - 1); }
-      if (e.key === 'f' || e.key === 'F') { if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => { }); else document.exitFullscreen(); }
-      if (e.key === 'p' || e.key === 'P') window.print();
-    });
-    /* Swipe horizontal — apenas em desktop (mobile usa scroll vertical nativo) */
-    const isMobile = () => window.innerWidth <= 768;
-    let _tx = 0, _ty = 0;
-    document.addEventListener('touchstart', e => { _tx = e.touches[0].clientX; _ty = e.touches[0].clientY; }, { passive: true });
-    document.addEventListener('touchend', e => {
-      if (isMobile()) return; /* no mobile o scroll é nativo */
-      const dx = e.changedTouches[0].clientX - _tx;
-      const dy = e.changedTouches[0].clientY - _ty;
-      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) goTo(dx < 0 ? cur + 1 : cur - 1);
-    }, { passive: true });
-    /* Inicializa progresso e contador */
-    /* Inicializa progresso e contador */
-    document.getElementById('counter').textContent = pad(1) + ' / ' + pad(TOTAL);
-    document.getElementById('progress-bar').style.width = ((1 / TOTAL) * 100) + '%';
-  </script>
 </body>
 
 </html>
